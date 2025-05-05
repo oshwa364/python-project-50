@@ -1,7 +1,8 @@
 import argparse
+import json
 
 
-def main():
+def parsing():
     parser = argparse.ArgumentParser(
         description='Compares two configuration files and shows a difference.'
     )
@@ -10,7 +11,14 @@ def main():
     parser.add_argument(
         '-f', '--format',
         help='set format of output')
-    parser.parse_args()
+    args = parser.parse_args()
+    first_file = json.load(open(args.first_file))
+    second_file = json.load(open(args.second_file))
+    return first_file, second_file
+
+
+def main():
+    parsing()
 
 
 if __name__ == '__main__':
