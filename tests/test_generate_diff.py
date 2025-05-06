@@ -7,3 +7,4 @@ FILE2 = 'tests/test_data/file2.json'
 
 def test_gen():
     assert generate_diff(FILE1, FILE2) == DIFF1
+  
