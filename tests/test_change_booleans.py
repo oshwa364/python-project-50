@@ -1,4 +1,4 @@
-from gendiff.scripts.gendiff import change_booleans
+from gendiff.scripts.parsing import change_booleans
 
 TEST_DICT = {
     "timeout": 20,
