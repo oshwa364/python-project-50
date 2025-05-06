@@ -1,6 +1,6 @@
 FILE1_DICT = {
     'host': 'hexlet.io', 'timeout': 50, 
-    'proxy': '123.234.53.22', 'follow': 'false'
+    'proxy': "123.234.53.22", 'follow': 'false'
 }
 
 FILE2_DICT = {
@@ -11,7 +11,7 @@ FILE2_DICT = {
 UNION1 = {
 'follow': 'false', 
 'host': 'hexlet.io', 
-'proxy': '123.234.53.22', 
+'proxy': "123.234.53.22", 
 'timeout': 20, 
 'verbose': 'true'
 }
