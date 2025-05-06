@@ -12,5 +12,6 @@ RES_DICT = {
     "host": "hexlet.io"
 }
 
+
 def test_change_booleans():
     assert change_booleans(TEST_DICT) == RES_DICT
