@@ -1,5 +1,3 @@
-import json
-
 from gendiff.scripts.gendiff import generate_diff
 from tests.test_data.results import DIFF1
 
