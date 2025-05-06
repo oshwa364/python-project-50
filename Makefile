@@ -8,7 +8,7 @@ test:
 	uv run pytest
 
 test-coverage:
-	uv run pytest --cov=hexlet-code --cov-report xml
+	uv run pytest --cov=gendiff tests/test_data/file1.json tests/test_data/file2.json --cov-report xml
 
 lint:
 	uv run ruff check
