@@ -2,7 +2,7 @@ install:
 	uv sync
 
 run:
-	uv run gendiff file1.json file2.json
+	uv run gendiff tests/test_data/file1.json tests/test_data/file2.json
 
 test:
 	uv run pytest

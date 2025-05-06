@@ -2,5 +2,4 @@
 .ruff_cache
 dist/
 __pycache__/
-*.json
 *.cast
