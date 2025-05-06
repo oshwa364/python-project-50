@@ -33,3 +33,4 @@ jobs:
             -Dsonar.projectKey=oshwa364_python-project-50
             -Dsonar.organization=thesameasname
             -Dsonar.python.coverage.reportPaths=coverage.xml
+            -Dsonar.coverage.exclusions=tests/**
