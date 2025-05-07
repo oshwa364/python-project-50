@@ -34,3 +34,4 @@ jobs:
             -Dsonar.organization=thesameasname
             -Dsonar.python.coverage.reportPaths=coverage.xml
             -Dsonar.coverage.exclusions=tests/**
+            -Dsonar.exclusions=tests/**
