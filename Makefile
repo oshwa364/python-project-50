@@ -2,7 +2,7 @@ install:
 	uv sync
 
 run:
-	uv run gendiff tests/test_data/file1.yml tests/test_data/file2.yml
+	uv run gendiff tests/test_data/file1.json tests/test_data/file2.json
 
 test:
 	uv run pytest

@@ -5,7 +5,7 @@ import os
 import yaml
 
 
-def parse_CLI():
+def parse_cli():
     parser = argparse.ArgumentParser(
         description='Compares two configuration files and shows a difference.'
     )
@@ -22,6 +22,8 @@ def change_booleans(coll: dict) -> dict:
     for key, value in coll.items():
         if isinstance(value, bool):
             coll[key] = 'true' if value else 'false'
+        elif isinstance(value, dict):
+            change_booleans(coll[key])
     return coll
 
 
@@ -41,6 +43,4 @@ def parse_files(file_path1, file_path2):
 
     file1 = change_booleans(file1)
     file2 = change_booleans(file2)
-    union_file = file1 | file2
-    union_file = dict(sorted(union_file.items()))
-    return file1, file2, union_file
+    return file1, file2
