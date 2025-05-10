@@ -9,7 +9,9 @@ FILE2_YAML = 'tests/test_data/file2.yml'
 
 
 def test_parse_files():
-    assert parse_files(FILE1_JSON, FILE2_JSON) == \
-    (FILE1_DICT, FILE2_DICT)
-    assert parse_files(FILE1_YAML, FILE2_YAML) == \
-    (FILE1_DICT, FILE2_DICT)
+    assert parse_files(FILE1_JSON, FILE2_JSON) == (
+        FILE1_DICT, FILE2_DICT
+    )
+    assert parse_files(FILE1_YAML, FILE2_YAML) == (
+        FILE1_DICT, FILE2_DICT
+    )

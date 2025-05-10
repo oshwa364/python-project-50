@@ -1,3 +1,4 @@
+from gendiff.formatters.format_json import format_json
 from gendiff.formatters.format_plain import format_plain
 from gendiff.formatters.format_stylish import format_stylish
 
@@ -46,4 +47,6 @@ def generate_diff(file1, file2, format_name='stylish') -> str:
             result = format_stylish(diff)
         case 'plain':
             result = format_plain(diff)
+        case 'json':
+            result = format_json(diff)
     return result

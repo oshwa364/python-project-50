@@ -2,30 +2,29 @@ REPLACER = ' '
 SPACE_COUNT = 4
 
 
-def format_value(val, depth: int) -> str:
+def format_value(node, depth: int) -> str:
     big_indent = REPLACER * SPACE_COUNT * (depth + 1)
     indent = REPLACER * SPACE_COUNT * depth
-    if not isinstance(val, dict):
-        if isinstance(val, bool):
-            return 'true' if val else 'false'
-        elif val is None:
+    if not isinstance(node, dict):
+        if isinstance(node, bool):
+            return 'true' if node else 'false'
+        elif node is None:
             return 'null'
         else:
-            return str(val)
+            return str(node)
     result = []
-    for key, value in val.items():
+    for key, value in node.items():
         result.append(f'{big_indent}{key}: {format_value(value, depth + 1)}')
     return '{\n' + '\n'.join(result) + '\n' + indent + '}'
 
 
 def format_stylish(diff: dict) -> str:
-
-    def inner(val, depth):
+    def inner(node, depth):
         big_indent = REPLACER * SPACE_COUNT * (depth + 1)
         sigh_indent = REPLACER * (SPACE_COUNT * (depth + 1) - 2)
         indent = REPLACER * SPACE_COUNT * depth
         result = []
-        for key, value in val.items():
+        for key, value in node.items():
             match value['status']:
                 case 'added':
                     result.append(f'{sigh_indent}+ {key}: {format_value(value['value'], depth + 1)}')  # noqa: E501
@@ -40,5 +39,4 @@ def format_stylish(diff: dict) -> str:
                     children = inner(value['children'], depth + 1)
                     result.append(f'{big_indent}{key}: {children}')
         return '{\n' + '\n'.join(result) + '\n' + indent + '}'
-
     return inner(dict(sorted(diff.items())), 0)

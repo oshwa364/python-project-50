@@ -1,6 +1,11 @@
 from gendiff.scripts.gendiff import generate_diff
 from gendiff.scripts.parsing import parse_files
-from tests.test_data.results import DIFF, DIFF_DEEP_PLAIN, DIFF_DEEP_STYLISH
+from tests.test_data.results import (
+    DIFF,
+    DIFF_DEEP_JSON,
+    DIFF_DEEP_PLAIN,
+    DIFF_DEEP_STYLISH,
+)
 
 FILE1_JSON, FILE2_JSON = parse_files(
     'tests/test_data/file1.json',
@@ -32,3 +37,5 @@ def test_gen():
     DIFF_DEEP_PLAIN
     assert generate_diff(FILE1_DEEP_YAML, FILE2_DEEP_YAML, 'plain') == \
     DIFF_DEEP_PLAIN
+    assert generate_diff(FILE1_DEEP_JSON, FILE2_DEEP_JSON, 'json') == \
+    DIFF_DEEP_JSON
