@@ -12,8 +12,6 @@ def format_value(val):
 def format_plain(diff: dict) -> str:
     def node_format(node, ancestry_name=''):
         result = []
-        if isinstance(node, str):
-            return node
         for key, value in node.items():
             proper_name = ancestry_name + key
             match value['status']:

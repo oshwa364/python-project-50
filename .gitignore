@@ -5,3 +5,4 @@ __pycache__/
 *.cast
 my_attempts.py
 .vscode
+.pytest_cache
