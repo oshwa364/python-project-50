@@ -2,7 +2,7 @@ REPLACER = ' '
 SPACE_COUNT = 4
 
 
-def format_value(val, depth):
+def format_value(val, depth: int) -> str:
     big_indent = REPLACER * SPACE_COUNT * (depth + 1)
     indent = REPLACER * SPACE_COUNT * depth
     if not isinstance(val, dict):

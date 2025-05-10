@@ -1,5 +1,5 @@
-from gendiff.scripts.format import format_stylish
-from gendiff.scripts.parsing import parse_cli, parse_files
+from gendiff.formatters.format_plain import format_plain
+from gendiff.formatters.format_stylish import format_stylish
 
 
 def make_diff(file1, file2):
@@ -41,15 +41,9 @@ def make_diff(file1, file2):
 
 def generate_diff(file1, file2, format_name='stylish') -> str:
     diff = make_diff(file1, file2)
-    result = format_stylish(diff)
+    match format_name:
+        case 'stylish':
+            result = format_stylish(diff)
+        case 'plain':
+            result = format_plain(diff)
     return result
-
-
-def main():
-    file_path1, file_path2 = parse_cli()
-    file1, file2 = parse_files(file_path1, file_path2)
-    print(generate_diff(file1, file2))
-
-
-if __name__ == '__main__':
-    main()

@@ -2,7 +2,7 @@ install:
 	uv sync
 
 run:
-	uv run gendiff tests/test_data/file1_deep.yaml tests/test_data/file2_deep.yaml
+	uv run gendiff --format plain tests/test_data/file1_deep.yaml tests/test_data/file2_deep.yaml
 
 test:
 	uv run pytest
