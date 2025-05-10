@@ -17,8 +17,14 @@ FILE1_DEEP_JSON, FILE2_DEEP_JSON = parse_files(
     'tests/test_data/file2_deep.json'
 )
 
+FILE1_DEEP_YAML, FILE2_DEEP_YAML = parse_files(
+    'tests/test_data/file1_deep.yaml',
+    'tests/test_data/file2_deep.yaml'
+)
+
 
 def test_gen():
     assert generate_diff(FILE1_JSON, FILE2_JSON) == DIFF
     assert generate_diff(FILE1_YAML, FILE2_YAML) == DIFF
     assert generate_diff(FILE1_DEEP_JSON, FILE2_DEEP_JSON) == DIFF_DEEP
+    assert generate_diff(FILE1_DEEP_YAML, FILE2_DEEP_YAML) == DIFF_DEEP

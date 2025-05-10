@@ -1,47 +1,5 @@
+from gendiff.scripts.format import format_stylish
 from gendiff.scripts.parsing import parse_cli, parse_files
-
-
-def format_value(val, depth):
-    big_indent = '    ' * (depth + 1)
-    indent = '   ' * depth
-    if not isinstance(val, dict):
-        if isinstance(val, bool):
-            return 'true' if val else 'false'
-        elif val is None:
-            return 'null'
-        else:
-            return str(val)
-    result = []
-    for key, value in val.items():
-        result.append(f'{big_indent}{key}: {format_value(value, depth + 1)}')
-    return '{\n' + '\n'.join(result) + '\n' + indent + '}'
-
-
-def stylish(diff: dict) -> str:
-    replacer = ' '
-    space_count = 4
-    def inner(val, depth):
-        big_indent = replacer * space_count * (depth + 1)
-        indent_for_sigh = replacer * (space_count * (depth + 1) - 2)
-        indent = replacer * space_count * depth
-        result = []
-        for key, value in val.items():
-            match value['status']:
-                case 'added':
-                    result.append(f'{indent_for_sigh}+ {key}: {format_value(value['value'], depth + 1)}')
-                case 'removed':
-                    result.append(f'{indent_for_sigh}- {key}: {format_value(value['value'], depth + 1)}')
-                case 'unchanged':
-                    result.append(f'{big_indent}{key}: {format_value(value['value'], depth + 1)}')
-                case 'changed':
-                    result.append(f'{indent_for_sigh}- {key}: {format_value(value['old_value'], depth + 1)}')
-                    result.append(f'{indent_for_sigh}+ {key}: {format_value(value['new_value'], depth + 1)}')
-                case 'nested':
-                    children = inner(value['children'], depth + 1)
-                    result.append(f'{big_indent}{key}: {children}')
-        return '{\n' + '\n'.join(result) + '\n' + indent + '}'
-
-    return inner(dict(sorted(diff.items())), 0)
 
 
 def make_diff(file1, file2):
@@ -83,7 +41,7 @@ def make_diff(file1, file2):
 
 def generate_diff(file1, file2, format_name='stylish') -> str:
     diff = make_diff(file1, file2)
-    result = stylish(diff)
+    result = format_stylish(diff)
     return result
 
 
