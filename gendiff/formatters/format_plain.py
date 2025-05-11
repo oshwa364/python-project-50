@@ -5,6 +5,10 @@ def format_value(val):
         return 'true' if val else 'false'
     elif val is None:
         return 'null'
+    elif isinstance(val, int):
+        return val
+    elif isinstance(val, float):
+        return val
     else:
         return f"'{str(val)}'"
     
